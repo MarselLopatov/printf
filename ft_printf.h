@@ -6,21 +6,16 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 07:48:28 by cdoria            #+#    #+#             */
-/*   Updated: 2021/11/15 23:24:50 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:57:47 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-
-#include <stdio.h>	//del
-
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 
 int		ft_printf(const char *, ...);

@@ -6,17 +6,17 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 07:46:49 by marsel            #+#    #+#             */
-/*   Updated: 2021/11/15 23:34:57 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:57:12 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int	i;
-	int	ret;
-	va_list ap;
+	int		i;
+	int		ret;
+	va_list	ap;
 
 	i = 0;
 	ret = 0;

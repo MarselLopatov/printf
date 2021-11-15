@@ -6,7 +6,7 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:00:38 by cdoria            #+#    #+#             */
-/*   Updated: 2021/11/15 23:25:51 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:56:13 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ unsigned long	ft_pow(int a, int b)
 	return (ret);
 }
 
-int		ft_hexadecimal(unsigned long nb, char *base)
+int	ft_hexadecimal(unsigned long nb, char *base)
 {
 	unsigned long	ret;
 	unsigned long	temp;
@@ -43,7 +43,6 @@ int		ft_hexadecimal(unsigned long nb, char *base)
 	while (temp > 1)
 	{
 		temp /= 16;
-		// ft_putchar_fd(base[nb / temp], 1);
 		write (1, &base[nb / temp], 1);
 		nb %= temp;
 	}

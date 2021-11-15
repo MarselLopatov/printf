@@ -6,7 +6,7 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:07:51 by cdoria            #+#    #+#             */
-/*   Updated: 2021/11/15 23:25:43 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:56:41 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_putnbr_unsigned(unsigned int nb)
 {
-	int		ret;
-	unsigned int		temp;
-	char	*result;
+	int				ret;
+	unsigned int	temp;
+	char			*result;
 
 	ret = 0;
 	if (!nb)
@@ -44,9 +44,9 @@ int	ft_putnbr_unsigned(unsigned int nb)
 
 int	ft_putnbr(int nb)
 {
-	int		ret;
-	unsigned int		temp;
-	char	*result;
+	int				ret;
+	unsigned int	temp;
+	char			*result;
 
 	ret = 0;
 	if (!nb)
