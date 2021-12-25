@@ -6,7 +6,7 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 07:46:49 by marsel            #+#    #+#             */
-/*   Updated: 2021/11/15 23:57:12 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/12/25 23:05:37 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1])
 		{
 			ret += ft_check_solution(&format[i + 1], ap);
-			i+=2;
-			continue;
+			i += 2;
+			continue ;
 		}
 		ret += write(1, &format[i], 1);
 		i++;
@@ -38,31 +38,26 @@ int	ft_printf(const char *format, ...)
 
 int	ft_check_solution(const char *fmt, va_list ap)
 {
-	int		ret;
 	char	ch;
 
-	ret = 0;
 	if (*fmt == 'c')
 	{
 		ch = va_arg(ap, int);
-		ret = write(1, &ch, 1);
+		return (write(1, &ch, 1));
 	}
 	else if (*fmt == 's')
-		ret += ft_putstr(va_arg(ap, char *));
+		return (ft_putstr(va_arg(ap, char *)));
 	else if (*fmt == 'p')
-	{
-		ret += ft_putstr("0x");
-		ret += ft_hexadecimal_p(va_arg(ap, unsigned long), "0123456789abcdef");
-	}
+		return (ft_putstr("0x") + ft_hexadecimal_p(va_arg(ap, unsigned long)));
 	else if (*fmt == 'd' || *fmt == 'i')
-		ret += ft_putnbr(va_arg(ap, int));
+		return (ft_putnbr(va_arg(ap, int)));
 	else if (*fmt == 'u')
-		ret += ft_putnbr_unsigned(va_arg(ap, unsigned int));
+		return (ft_putnbr_unsigned(va_arg(ap, unsigned int)));
 	else if (*fmt == 'x')
-		ret += ft_hexadecimal(va_arg(ap, unsigned int), "0123456789abcdef");
+		return (ft_hexadecimal(va_arg(ap, unsigned int), 1));
 	else if (*fmt == 'X')
-		ret += ft_hexadecimal(va_arg(ap, unsigned int), "0123456789ABCDEF");
+		return (ft_hexadecimal(va_arg(ap, unsigned int), 0));
 	else if (*fmt == '%')
-		ret = write(1, fmt, 1);
-	return (ret);
+		return (write(1, fmt, 1));
+	return (0);
 }

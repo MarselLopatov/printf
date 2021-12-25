@@ -6,47 +6,32 @@
 /*   By: cdoria <cdoria@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:07:51 by cdoria            #+#    #+#             */
-/*   Updated: 2021/11/15 23:56:41 by cdoria           ###   ########.fr       */
+/*   Updated: 2021/12/25 23:07:06 by cdoria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putnbr_unsigned(unsigned int nb)
+void	write_nbr(unsigned int nb)
 {
-	int				ret;
-	unsigned int	temp;
-	char			*result;
+	char	ch;
 
-	ret = 0;
-	if (!nb)
-		return (write(1, "0", 1));
-	temp = nb;
-	while (nb)
+	if (nb < 10)
 	{
-		ret++;
-		nb /= 10;
+		ch = nb + '0';
+		write(1, &ch, 1);
 	}
-	result = (char *) malloc(ret * sizeof(char));
-	if (!result)
-		return (0);
-	nb = 0;
-	while (temp != 0)
+	else
 	{
-		result[nb++] = temp % 10 + '0';
-		temp /= 10;
+		write_nbr(nb / 10);
+		write_nbr(nb % 10);
 	}
-	while (nb--)
-		write(1, &result[nb], 1);
-	free (result);
-	return (ret);
 }
 
 int	ft_putnbr(int nb)
 {
 	int				ret;
-	unsigned int	temp;
-	char			*result;
+	unsigned int	nbr;
 
 	ret = 0;
 	if (!nb)
@@ -54,25 +39,31 @@ int	ft_putnbr(int nb)
 	if (nb < 0)
 	{
 		ret += write(1, "-", 1);
-		nb = -nb;
+		nbr = -nb;
 	}
-	temp = nb;
+	else
+		nbr = nb;
+	write_nbr(nbr);
 	while (nb)
 	{
 		ret++;
 		nb /= 10;
 	}
-	result = (char *) malloc(ret * sizeof(char));
-	if (!result)
-		return (0);
-	nb = 0;
-	while (temp != 0)
+	return (ret);
+}
+
+int	ft_putnbr_unsigned(unsigned int nb)
+{
+	int	ret;
+
+	ret = 0;
+	if (!nb)
+		return (write(1, "0", 1));
+	write_nbr(nb);
+	while (nb)
 	{
-		result[nb++] = temp % 10 + '0';
-		temp /= 10;
+		ret++;
+		nb /= 10;
 	}
-	while (nb--)
-		write(1, &result[nb], 1);
-	free (result);
 	return (ret);
 }
